@@ -1,0 +1,12 @@
+version: 2.1
+orbs: 
+  docker: circleci/docker@2.0.3
+workflows:
+  build-and-publish-docker-image:
+    jobs:
+      - docker/publish:
+          dockerfile: Dockerfile
+          image: $DOCKERHUB_USERNAME/apigw
+          tag: latest
+          docker-password: DOCKERHUB_PASSWORD
+          docker-username: DOCKERHUB_USERNAME
